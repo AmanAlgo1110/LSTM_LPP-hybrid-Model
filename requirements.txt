@@ -2,3 +2,4 @@ pulp
 tensorflow
 keras
 joblib
+sklearn
