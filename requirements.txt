@@ -2,4 +2,5 @@ pulp
 tensorflow
 keras
 joblib
-sklearn
+scikit-learn
+
