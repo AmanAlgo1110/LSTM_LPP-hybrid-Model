@@ -209,7 +209,7 @@ from pulp import LpMaximize, LpProblem, LpVariable, value, LpStatus
 
 # ---------- 1. SET UP THE PAGE ----------
 st.set_page_config(page_title="Factory Optimization", layout="wide")
-st.title("Smart Factory: LSTM Forecast & PuLP Optimization")
+st.title("Smart Factory: LSTM Forecast & Simplex Optimization")
 st.write("""
 This tool uses a trained LSTM model to forecast future demand, then runs a 
 Linear Programming model (PuLP) to find the most profitable production plan 
@@ -240,7 +240,7 @@ def load_seed_data():
         df = pd.read_csv("factory_demand.csv")
         return df
     except FileNotFoundError:
-        st.error("Error: 'factory_demand_with_patterns.csv' not found.")
+        st.error("Error: 'factory_demand.csv' not found.")
         st.stop()
 
 df_seed = load_seed_data()
@@ -462,5 +462,6 @@ if run_optimize_btn:
                 st.error("Optimization Failed: Infeasible. This means it's impossible to meet your minimum production goals with your available resources. Try reducing the 'Min Production' or increasing resources.")
             else:
                 st.error(f"Optimization Failed. Status: {LpStatus[model_lp.status]}")
+
 
 
